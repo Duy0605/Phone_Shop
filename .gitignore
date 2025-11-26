@@ -1,0 +1,35 @@
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Uploads & Cache
+public/uploads/*
+!public/uploads/.gitkeep
+cache/
+*.cache
+
+# Environment & Config (nếu có thông tin nhạy cảm)
+# config/database.php
+
+# Vendor & Dependencies
+vendor/
+node_modules/
+
+# Backup files
+*.bak
+*.sql~
+
+# Test files
+test-db.php
