@@ -241,10 +241,10 @@
         const loginBtn = document.getElementById('loginBtn');
 
         // Email validation
-        emailInput.addEventListener('blur', function() {
+        emailInput.addEventListener('blur', function () {
             const error = document.getElementById('email-error');
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
+
             if (!emailRegex.test(this.value)) {
                 this.classList.add('error');
                 error.classList.add('show');
@@ -254,15 +254,15 @@
             }
         });
 
-        emailInput.addEventListener('input', function() {
+        emailInput.addEventListener('input', function () {
             this.classList.remove('error');
             document.getElementById('email-error').classList.remove('show');
         });
 
         // Password validation
-        passwordInput.addEventListener('blur', function() {
+        passwordInput.addEventListener('blur', function () {
             const error = document.getElementById('password-error');
-            
+
             if (this.value.length === 0) {
                 this.classList.add('error');
                 error.classList.add('show');
@@ -272,13 +272,13 @@
             }
         });
 
-        passwordInput.addEventListener('input', function() {
+        passwordInput.addEventListener('input', function () {
             this.classList.remove('error');
             document.getElementById('password-error').classList.remove('show');
         });
 
         // Form submit
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             let isValid = true;
 
