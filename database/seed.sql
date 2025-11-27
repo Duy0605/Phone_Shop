@@ -6,19 +6,19 @@ USE phone_shop;
 
 -- ============================================
 -- Seed Users
--- Password mặc định cho tất cả: "123456"
--- Hash: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
+-- Admin: Email: admin@phoneshop.com | Password: admin123
+-- Customer: Password mặc định: 123456
 -- ============================================
 
--- Admin account
+-- Admin account (Password: admin123)
 INSERT INTO users (name, email, phone, password, role) VALUES
-('Admin Nguyễn Văn A', 'admin@phoneshop.com', '0901234567', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
+('Admin Nguyễn Văn A', 'admin@phoneshop.com', '0901234567', '$2y$10$wtlIl9h6FUwba9Q4n.jHpuEK0LE7L9h0/KPRce1cr6yxLJdrulJBW', 'admin');
 
--- Customer accounts
+-- Customer accounts (Password: 123456)
 INSERT INTO users (name, email, phone, password, role) VALUES
-('Trần Thị B', 'tranthib@gmail.com', '0912345678', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer'),
-('Lê Văn C', 'levanc@gmail.com', '0923456789', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer'),
-('Phạm Thị D', 'phamthid@gmail.com', '0934567890', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer');
+('Trần Thị B', 'tranthib@gmail.com', '0912345678', '$2y$10$gRAre/PUNC3aenlmfghmxe0oJpUSIo9N9AyGYGRe89c9AijLqP4tm', 'customer'),
+('Lê Văn C', 'levanc@gmail.com', '0923456789', '$2y$10$gRAre/PUNC3aenlmfghmxe0oJpUSIo9N9AyGYGRe89c9AijLqP4tm', 'customer'),
+('Phạm Thị D', 'phamthid@gmail.com', '0934567890', '$2y$10$gRAre/PUNC3aenlmfghmxe0oJpUSIo9N9AyGYGRe89c9AijLqP4tm', 'customer');
 
 -- ============================================
 -- Seed Brands
