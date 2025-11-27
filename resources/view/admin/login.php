@@ -191,7 +191,7 @@
                 </div>
             <?php endif; ?>
 
-            <form method="POST" action="<?= config('app.base_url') ?>/admin/login">
+            <form method="POST" action="">
                 <?= csrfField() ?>
 
                 <div class="form-group">

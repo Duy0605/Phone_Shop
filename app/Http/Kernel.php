@@ -39,9 +39,15 @@ class Kernel
 
         // Xóa base path nếu app không ở root
         // Ví dụ: /Phone_Shop/public/products -> /products
-        $scriptName = dirname($_SERVER['SCRIPT_NAME']);
-        if ($scriptName !== '/') {
-            $uri = str_replace($scriptName, '', $uri);
+        $scriptName = $_SERVER['SCRIPT_NAME'] ?? '/index.php';
+        $baseDir = str_replace('\\', '/', dirname($scriptName));
+
+        // Chỉ xử lý nếu baseDir không phải là root
+        if ($baseDir !== '/' && $baseDir !== '') {
+            // Nếu URI bắt đầu với baseDir, xóa nó
+            if (strpos($uri, $baseDir) === 0) {
+                $uri = substr($uri, strlen($baseDir));
+            }
         }
 
         // Đảm bảo URI bắt đầu bằng /

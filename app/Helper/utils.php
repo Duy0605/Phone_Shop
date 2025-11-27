@@ -12,9 +12,17 @@
 function redirect($url, $statusCode = 302)
 {
     // Nếu là relative URL, thêm base_url
-    if (strpos($url, 'http') !== 0) {
-        $baseUrl = config('app.base_url', '');
-        $url = rtrim($baseUrl, '/') . '/' . ltrim($url, '/');
+    if (strpos($url, 'http') !== 0 && strpos($url, '://') === false) {
+        // Lấy đường dẫn base từ script name
+        $scriptName = $_SERVER['SCRIPT_NAME'] ?? '/index.php';
+        $baseDir = str_replace('\\', '/', dirname($scriptName));
+
+        // Nếu URL bắt đầu bằng /, không cần thêm baseDir
+        if (strpos($url, '/') === 0) {
+            $url = rtrim($baseDir, '/') . $url;
+        } else {
+            $url = rtrim($baseDir, '/') . '/' . ltrim($url, '/');
+        }
     }
 
     header("Location: {$url}", true, $statusCode);

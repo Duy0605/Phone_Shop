@@ -33,7 +33,7 @@
                 </div>
             <?php endif; ?>
 
-            <form method="POST" action="<?= config('app.base_url') ?>/login">
+            <form method="POST" action="">
                 <div class="form-group">
                     <label for="email">Email *</label>
                     <input type="email" id="email" name="email" value="<?= escape($_POST['email'] ?? '') ?>"

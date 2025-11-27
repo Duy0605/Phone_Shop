@@ -33,9 +33,9 @@ include __DIR__ . '/../layouts/header-component.php';
 
         <div class="profile-content">
             <h2>Chỉnh sửa thông tin</h2>
-            <form method="POST" action="<?= config('app.base_url') ?>/profile/update">
+            <form method="POST" action="">
                 <div class="form-group">
-                    <label for="name">Họ tên *</label>
+                    <label for="name">Họ và tên *</label>
                     <input type="text" id="name" name="name" value="<?= escape($user['name']) ?>" required>
                 </div>
 

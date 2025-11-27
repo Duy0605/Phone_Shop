@@ -26,7 +26,7 @@
                 </div>
             <?php endif; ?>
 
-            <form method="POST" action="<?= config('app.base_url') ?>/register">
+            <form method="POST" action="">
                 <div class="form-group">
                     <label for="name">Họ và tên *</label>
                     <input type="text" id="name" name="name" value="<?= escape($_POST['name'] ?? '') ?>"

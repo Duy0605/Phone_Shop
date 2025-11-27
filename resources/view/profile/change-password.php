@@ -23,7 +23,7 @@ include __DIR__ . '/../layouts/header-component.php';
 
     <div class="profile-container">
         <div class="profile-content">
-            <form method="POST" action="<?= config('app.base_url') ?>/profile/change-password">
+            <form method="POST" action="">
                 <div class="form-group">
                     <label for="current_password">Mật khẩu hiện tại *</label>
                     <input type="password" id="current_password" name="current_password" required>
