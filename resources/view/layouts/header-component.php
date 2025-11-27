@@ -23,18 +23,18 @@
     <!-- Sticky Header -->
     <div class="header">
         <div class="header-top">
-            <a href="<?= config('app.base_url') ?>/" class="logo">📱 Phone Shop</a>
+            <a href="<?= url('/') ?>" class="logo">📱 Phone Shop</a>
             <nav class="nav-menu">
-                <a href="<?= config('app.base_url') ?>/">Trang chủ</a>
-                <a href="<?= config('app.base_url') ?>/products">Sản phẩm</a>
-                <a href="<?= config('app.base_url') ?>/cart">🛒 Giỏ hàng</a>
+                <a href="<?= url('/') ?>">Trang chủ</a>
+                <a href="<?= url('/products') ?>">Sản phẩm</a>
+                <a href="<?= url('/cart') ?>">🛒 Giỏ hàng</a>
                 <?php if (isAuthenticated()): ?>
-                    <a href="<?= config('app.base_url') ?>/profile">👤 <?= escape(getUserName()) ?></a>
-                    <a href="<?= config('app.base_url') ?>/orders">Đơn hàng</a>
-                    <a href="<?= config('app.base_url') ?>/logout">Đăng xuất</a>
+                    <a href="<?= url('/profile') ?>">👤 <?= escape(getUserName()) ?></a>
+                    <a href="<?= url('/orders') ?>">Đơn hàng</a>
+                    <a href="<?= url('/logout') ?>">Đăng xuất</a>
                 <?php else: ?>
-                    <a href="<?= config('app.base_url') ?>/login">Đăng nhập</a>
-                    <a href="<?= config('app.base_url') ?>/register">Đăng ký</a>
+                    <a href="<?= url('/login') ?>">Đăng nhập</a>
+                    <a href="<?= url('/register') ?>">Đăng ký</a>
                 <?php endif; ?>
             </nav>
         </div>

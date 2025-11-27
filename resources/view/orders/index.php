@@ -10,9 +10,9 @@ include __DIR__ . '/../layouts/header-component.php';
     <?php if (empty($orders)): ?>
         <div class="empty-orders">
             <div style="font-size: 5rem;">📦</div>
-            <h2>Chưa có đơn hàng nào</h2>
-            <p>Bạn chưa đặt đơn hàng nào</p>
-            <a href="<?= config('app.base_url') ?>/products" class="btn btn-primary">Tiếp tục mua sắm</a>
+            <h2>Chưa có đơn hàng</h2>
+            <p>Bạn chưa có đơn hàng nào</p>
+            <a href="<?= url('/products') ?>" class="btn btn-primary">Tiếp tục mua sắm</a>
         </div>
     <?php else: ?>
         <div class="orders-list">
@@ -53,7 +53,7 @@ include __DIR__ . '/../layouts/header-component.php';
                     </div>
 
                     <div class="order-actions">
-                        <a href="<?= config('app.base_url') ?>/orders/<?= $order['id'] ?>" class="btn btn-detail">
+                        <a href="<?= url('/orders/' . $order['id']) ?>" class="btn btn-detail">
                             Xem chi tiết
                         </a>
                     </div>

@@ -11,53 +11,17 @@ include __DIR__ . '/../layouts/header-component.php';
 
 <div class="container">
     <!-- Search Form -->
-    <form method="GET" action="<?= config('app.base_url') ?>/products/search" class="search-form">
-        <input type="text" name="q" placeholder="Tìm kiếm sản phẩm..." value="<?= escape($_GET['q'] ?? '') ?>">
-        <button type="submit">🔍 Tìm kiếm</button>
-    </form>
+    <?php include __DIR__ . '/../components/search-form.php'; ?>
 
     <!-- Brand Filter -->
-    <?php if (!empty($brands)): ?>
-        <div class="filter-section">
-            <h3>Lọc theo thương hiệu:</h3>
-            <div class="filter-buttons">
-                <a href="<?= config('app.base_url') ?>/products" class="filter-btn">Tất cả</a>
-                <?php foreach ($brands as $b): ?>
-                    <a href="<?= config('app.base_url') ?>/products/brand/<?= escape($b['slug']) ?>"
-                        class="filter-btn <?= $b['id'] === $brand['id'] ? 'active' : '' ?>">
-                        <?= escape($b['name']) ?>
-                    </a>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    <?php endif; ?>
+    <?php $activeBrand = $brand;
+    include __DIR__ . '/../components/brand-filter.php'; ?>
 
     <!-- Products Grid -->
     <?php if (!empty($products)): ?>
         <div class="products-grid">
             <?php foreach ($products as $product): ?>
-                <div class="product-card">
-                    <div class="product-image">
-                        <?php if (!empty($product['image'])): ?>
-                            <img src="<?= config('app.base_url') ?>/<?= escape($product['image']) ?>"
-                                alt="<?= escape($product['name']) ?>">
-                        <?php else: ?>
-                            📱
-                        <?php endif; ?>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-brand"><?= escape($product['brand_name'] ?? 'Unknown') ?></div>
-                        <div class="product-name"><?= escape($product['name']) ?></div>
-                        <div class="product-price"><?= formatPrice($product['price']) ?></div>
-                        <div class="product-actions">
-                            <a href="<?= config('app.base_url') ?>/product/<?= escape($product['slug']) ?>"
-                                class="btn btn-detail">Chi tiết</a>
-                            <button class="btn btn-cart" onclick="addToCart(<?= $product['id'] ?>)">
-                                Thêm vào giỏ
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <?php include __DIR__ . '/../components/product-card.php'; ?>
             <?php endforeach; ?>
         </div>
     <?php else: ?>
@@ -65,7 +29,7 @@ include __DIR__ . '/../layouts/header-component.php';
             <div style="font-size: 5rem;">📱</div>
             <h2>Chưa có sản phẩm</h2>
             <p>Thương hiệu <?= escape($brand['name']) ?> chưa có sản phẩm nào</p>
-            <a href="<?= config('app.base_url') ?>/products" class="btn btn-primary">Xem tất cả sản phẩm</a>
+            <a href="<?= url('/products') ?>" class="btn btn-primary">Xem tất cả sản phẩm</a>
         </div>
     <?php endif; ?>
 </div>

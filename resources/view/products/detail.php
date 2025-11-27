@@ -57,7 +57,7 @@ include __DIR__ . '/../layouts/header-component.php';
     </div>
 
     <div style="text-align: center; margin-top: 2rem;">
-        <a href="<?= config('app.base_url') ?>/products" class="btn btn-secondary">← Quay lại danh sách</a>
+        <a href="<?= url('/products') ?>" class="btn btn-secondary">← Quay lại danh sách</a>
     </div>
 </div>
 

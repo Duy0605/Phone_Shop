@@ -146,7 +146,7 @@ $statusText = [
     </div>
 
     <div style="text-align: center; margin-top: 2rem;">
-        <a href="<?= config('app.base_url') ?>/orders" class="btn btn-secondary">← Quay lại danh sách</a>
+        <a href="<?= url('/orders') ?>" class="btn btn-secondary">← Quay lại danh sách</a>
     </div>
 </div>
 

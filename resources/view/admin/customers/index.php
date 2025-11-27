@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base-url" content="<?= config('app.base_url') ?>">
     <title><?= $pageTitle ?? 'Quản lý khách hàng' ?></title>
     <style>
         * {

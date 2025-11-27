@@ -8,20 +8,20 @@
         <div class="footer-section">
             <h3>Liên kết</h3>
             <ul>
-                <li><a href="<?= config('app.base_url') ?>/">Trang chủ</a></li>
-                <li><a href="<?= config('app.base_url') ?>/products">Sản phẩm</a></li>
-                <li><a href="<?= config('app.base_url') ?>/cart">Giỏ hàng</a></li>
+                <li><a href="<?= url('/') ?>">Trang chủ</a></li>
+                <li><a href="<?= url('/products') ?>">Sản phẩm</a></li>
+                <li><a href="<?= url('/cart') ?>">Giỏ hàng</a></li>
             </ul>
         </div>
         <div class="footer-section">
             <h3>Tài khoản</h3>
             <ul>
                 <?php if (isAuthenticated()): ?>
-                    <li><a href="<?= config('app.base_url') ?>/profile">Thông tin cá nhân</a></li>
-                    <li><a href="<?= config('app.base_url') ?>/orders">Đơn hàng của tôi</a></li>
+                    <li><a href="<?= url('/profile') ?>">Thông tin cá nhân</a></li>
+                    <li><a href="<?= url('/orders') ?>">Đơn hàng của tôi</a></li>
                 <?php else: ?>
-                    <li><a href="<?= config('app.base_url') ?>/login">Đăng nhập</a></li>
-                    <li><a href="<?= config('app.base_url') ?>/register">Đăng ký</a></li>
+                    <li><a href="<?= url('/login') ?>">Đăng nhập</a></li>
+                    <li><a href="<?= url('/register') ?>">Đăng ký</a></li>
                 <?php endif; ?>
             </ul>
         </div>

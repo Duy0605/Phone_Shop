@@ -400,7 +400,7 @@
                 <h2>⚙️ Quản lý đơn hàng</h2>
             </div>
 
-            <form method="POST" action="/admin/orders/<?= $order['id'] ?>/status" class="status-form">
+            <form method="POST" action="<?= url('/admin/orders/' . $order['id'] . '/status') ?>" class="status-form">
                 <label style="font-weight: 600;">Cập nhật trạng thái:</label>
                 <select name="status" <?= $order['status'] === 'cancelled' ? 'disabled' : '' ?>>
                     <option value="pending" <?= $order['status'] === 'pending' ? 'selected' : '' ?>>⏳ Chờ xử lý</option>
@@ -420,7 +420,7 @@
             </form>
 
             <?php if ($order['status'] !== 'cancelled' && $order['status'] !== 'delivered'): ?>
-                <form method="POST" action="/admin/orders/<?= $order['id'] ?>/cancel"
+                <form method="POST" action="<?= url('/admin/orders/' . $order['id'] . '/cancel') ?>"
                     onsubmit="return confirm('Bạn có chắc muốn hủy đơn hàng này? Stock sẽ được hoàn lại.')"
                     style="margin-top: 1rem;">
                     <button type="submit" class="btn btn-danger">

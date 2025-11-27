@@ -68,7 +68,7 @@ include __DIR__ . '/../layouts/header-component.php';
 
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Cập nhật</button>
-                    <a href="<?= config('app.base_url') ?>/" class="btn btn-secondary">Hủy</a>
+                    <a href="<?= url('/') ?>" class="btn btn-secondary">Hủy</a>
                 </div>
             </form>
         </div>

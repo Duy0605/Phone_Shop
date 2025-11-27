@@ -1,5 +1,10 @@
 // Main JavaScript - Chung cho toàn bộ website
 
+// Get base URL from meta tag
+function getBaseUrl() {
+    return document.querySelector('meta[name="base-url"]')?.content || "";
+}
+
 // Add to Cart Function
 function addToCart(productId, quantity = 1) {
     const baseUrl =

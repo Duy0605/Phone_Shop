@@ -9,10 +9,10 @@ include __DIR__ . '/../layouts/header-component.php';
 
     <?php if (empty($cartItems)): ?>
         <div class="empty-cart">
-            <div style="font-size: 5rem;">🛒</div>
+            <div style="font-size: 5rem;">🛍️</div>
             <h2>Giỏ hàng trống</h2>
             <p>Bạn chưa thêm sản phẩm nào vào giỏ hàng</p>
-            <a href="<?= config('app.base_url') ?>/products" class="btn btn-primary">Tiếp tục mua sắm</a>
+            <a href="<?= url('/products') ?>" class="btn btn-primary">Tiếp tục mua sắm</a>
         </div>
     <?php else: ?>
         <div class="cart-container">
@@ -86,7 +86,7 @@ include __DIR__ . '/../layouts/header-component.php';
         <span class="close" onclick="closeCheckoutModal()">&times;</span>
         <h2>📋 Thông tin đặt hàng</h2>
 
-        <form method="POST" action="/checkout" id="checkoutForm">
+        <form method="POST" action="<?= url('/checkout') ?>" id="checkoutForm">
             <?= csrfField() ?>
 
             <!-- Hidden input chứa danh sách item IDs được chọn -->

@@ -50,7 +50,7 @@ include __DIR__ . '/../layouts/header-component.php';
 
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
-                    <a href="<?= config('app.base_url') ?>/profile" class="btn btn-secondary">Hủy</a>
+                    <a href="<?= url('/profile') ?>" class="btn btn-secondary">Hủy</a>
                 </div>
             </form>
         </div>

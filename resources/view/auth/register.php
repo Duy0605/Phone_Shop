@@ -61,8 +61,8 @@
         </div>
 
         <div class="auth-links">
-            <p>Đã có tài khoản? <a href="<?= config('app.base_url') ?>/login">Đăng nhập</a></p>
-            <p><a href="<?= config('app.base_url') ?>/">← Quay lại trang chủ</a></p>
+            <p>Đã có tài khoản? <a href="<?= url('/login') ?>">Đăng nhập</a></p>
+            <p><a href="<?= url('/') ?>">← Quay lại trang chủ</a></p>
         </div>
     </div>
 

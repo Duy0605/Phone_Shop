@@ -375,3 +375,64 @@ function paginate($total, $perPage, $currentPage = 1)
         'offset' => ($currentPage - 1) * $perPage
     ];
 }
+
+/**
+ * Generate URL với base path
+ * @param string $path Path cần tạo URL (ví dụ: '/products', 'login')
+ * @return string Full URL với base path
+ */
+function url($path = '')
+{
+    $scriptName = $_SERVER['SCRIPT_NAME'] ?? '/index.php';
+    $baseDir = str_replace('\\', '/', dirname($scriptName));
+
+    // Đảm bảo path bắt đầu bằng /
+    if (!empty($path) && strpos($path, '/') !== 0) {
+        $path = '/' . $path;
+    }
+
+    // Nếu baseDir là root, chỉ return path
+    if ($baseDir === '/' || $baseDir === '') {
+        return $path ?: '/';
+    }
+
+    // Combine baseDir với path
+    return rtrim($baseDir, '/') . $path;
+}
+
+/**
+ * Render order status badge
+ * @param string $status Order status
+ * @return string HTML badge
+ */
+function renderStatusBadge($status)
+{
+    $statusLabels = [
+        'pending' => '⏳ Chờ xử lý',
+        'processing' => '⚙️ Đang xử lý',
+        'shipping' => '🚚 Đang giao',
+        'delivered' => '✅ Đã giao',
+        'cancelled' => '❌ Đã hủy'
+    ];
+
+    $label = $statusLabels[$status] ?? $status;
+    return '<span class="badge badge-' . escape($status) . '">' . escape($label) . '</span>';
+}
+
+/**
+ * Get order status label
+ * @param string $status Order status code
+ * @return string Status label
+ */
+function getStatusLabel($status)
+{
+    $statusLabels = [
+        'pending' => '⏳ Chờ xử lý',
+        'processing' => '⚙️ Đang xử lý',
+        'shipping' => '🚚 Đang giao',
+        'delivered' => '✅ Đã giao',
+        'cancelled' => '❌ Đã hủy'
+    ];
+
+    return $statusLabels[$status] ?? $status;
+}

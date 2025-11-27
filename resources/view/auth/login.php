@@ -50,8 +50,8 @@
         </div>
 
         <div class="auth-links">
-            <p>Chưa có tài khoản? <a href="<?= config('app.base_url') ?>/register">Đăng ký ngay</a></p>
-            <p><a href="<?= config('app.base_url') ?>/">← Quay lại trang chủ</a></p>
+            <p>Chưa có tài khoản? <a href="<?= url('/register') ?>">Đăng ký ngay</a></p>
+            <p><a href="<?= url('/') ?>">← Quay lại trang chủ</a></p>
         </div>
     </div>
 
