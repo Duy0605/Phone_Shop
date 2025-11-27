@@ -92,6 +92,21 @@
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
+        .form-group input.error {
+            border-color: #f56565;
+        }
+
+        .field-error {
+            color: #f56565;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .field-error.show {
+            display: block;
+        }
+
         .btn-login {
             width: 100%;
             padding: 14px;
@@ -191,30 +206,116 @@
                 </div>
             <?php endif; ?>
 
-            <form method="POST" action="">
+            <form method="POST" action="" id="loginForm">
                 <?= csrfField() ?>
 
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="admin@phoneshop.com"
                         value="<?= escape(post('email', '')) ?>" required autofocus>
+                    <div class="field-error" id="email-error">Email không hợp lệ</div>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Mật khẩu</label>
                     <input type="password" id="password" name="password" placeholder="••••••••" required>
+                    <div class="field-error" id="password-error">Vui lòng nhập mật khẩu</div>
                 </div>
 
-                <button type="submit" class="btn-login">
+                <button type="submit" class="btn-login" id="loginBtn">
                     Đăng nhập
                 </button>
             </form>
 
             <div class="back-link">
-                <a href="<?= config('app.base_url') ?>/">← Về trang chủ</a>
+                <a href="<?= url('/') ?>">← Về trang chủ</a>
             </div>
         </div>
     </div>
+
+    <script>
+        // Form validation
+        const form = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const loginBtn = document.getElementById('loginBtn');
+
+        // Email validation
+        emailInput.addEventListener('blur', function() {
+            const error = document.getElementById('email-error');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test(this.value)) {
+                this.classList.add('error');
+                error.classList.add('show');
+            } else {
+                this.classList.remove('error');
+                error.classList.remove('show');
+            }
+        });
+
+        emailInput.addEventListener('input', function() {
+            this.classList.remove('error');
+            document.getElementById('email-error').classList.remove('show');
+        });
+
+        // Password validation
+        passwordInput.addEventListener('blur', function() {
+            const error = document.getElementById('password-error');
+            
+            if (this.value.length === 0) {
+                this.classList.add('error');
+                error.classList.add('show');
+            } else {
+                this.classList.remove('error');
+                error.classList.remove('show');
+            }
+        });
+
+        passwordInput.addEventListener('input', function() {
+            this.classList.remove('error');
+            document.getElementById('password-error').classList.remove('show');
+        });
+
+        // Form submit
+        form.addEventListener('submit', function(e) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let isValid = true;
+
+            // Validate email
+            if (!emailRegex.test(emailInput.value)) {
+                emailInput.classList.add('error');
+                document.getElementById('email-error').classList.add('show');
+                isValid = false;
+            }
+
+            // Validate password
+            if (passwordInput.value.length === 0) {
+                passwordInput.classList.add('error');
+                document.getElementById('password-error').classList.add('show');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                e.preventDefault();
+                return false;
+            }
+
+            // Disable button
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Đang đăng nhập...';
+        });
+
+        // Auto-dismiss alerts after 5 seconds
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                alert.style.transition = 'opacity 0.5s';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }, 5000);
+        });
+    </script>
 </body>
 
 </html>
