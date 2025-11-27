@@ -4,14 +4,23 @@
  * Cấu hình chung cho ứng dụng
  */
 
+// Tự động detect base URL
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
+$baseDir = str_replace('\\', '/', dirname($scriptName));
+
+$autoBaseUrl = $protocol . '://' . $host . $baseDir;
+$autoAssetsUrl = $protocol . '://' . $host . str_replace('/public', '/resources', $baseDir);
+
 return [
     // Thông tin ứng dụng
     'name' => 'Phone Shop',
     'version' => '1.0.0',
 
-    // URL cơ bản
-    'base_url' => 'http://localhost/Phone_Shop/Phone_Shop/public',
-    'assets_url' => 'http://localhost/Phone_Shop/Phone_Shop/resources',
+    // URL cơ bản (tự động detect)
+    'base_url' => $autoBaseUrl,
+    'assets_url' => $autoAssetsUrl,
 
     // Đường dẫn thư mục
     'root_path' => dirname(__DIR__),
