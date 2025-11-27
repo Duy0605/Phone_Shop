@@ -9,7 +9,8 @@ include __DIR__ . '/../layouts/header-component.php';
         <div class="product-detail-grid">
             <div class="product-detail-image">
                 <?php if (!empty($product['image'])): ?>
-                    <img src="<?= config('app.base_url') ?>/<?= escape($product['image']) ?>" alt="<?= escape($product['name']) ?>">
+                    <img src="<?= config('app.base_url') ?>/<?= escape($product['image']) ?>"
+                        alt="<?= escape($product['name']) ?>">
                 <?php else: ?>
                     <div class="no-image">📱</div>
                 <?php endif; ?>
