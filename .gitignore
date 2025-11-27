@@ -15,7 +15,7 @@ desktop.ini
 logs/
 
 # Uploads & Cache
-public/uploads/*
+# public/uploads/*
 !public/uploads/.gitkeep
 cache/
 *.cache
