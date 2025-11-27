@@ -238,8 +238,7 @@
                 </a>
             </div>
 
-            <form method="POST" action="<?= config('app.base_url') ?>/admin/brands/edit/<?= $brand['id'] ?>"
-                enctype="multipart/form-data">
+            <form method="POST" action="" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>
                         Tên thương hiệu <span class="required">*</span>

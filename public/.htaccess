@@ -2,6 +2,9 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     
+    # Set RewriteBase automatically
+    RewriteBase /
+    
     # Static resources are now in public/resources/
     # No rewrite needed - they're already accessible
     

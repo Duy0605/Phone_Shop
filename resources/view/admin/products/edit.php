@@ -237,8 +237,7 @@
                 </a>
             </div>
 
-            <form method="POST" action="<?= config('app.base_url') ?>/admin/products/edit/<?= $product['id'] ?>"
-                enctype="multipart/form-data">
+            <form method="POST" action="" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>
                         Tên sản phẩm <span class="required">*</span>

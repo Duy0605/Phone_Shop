@@ -15,7 +15,7 @@ include __DIR__ . '/layouts/header-component.php';
             <a href="<?= config('app.base_url') ?>/products" class="btn btn-primary">Tiếp tục mua sắm</a>
         </div>
     <?php else: ?>
-        <form method="POST" action="<?= config('app.base_url') ?>/checkout">
+        <form method="POST" action="">
             <div class="checkout-container">
                 <div class="checkout-form">
                     <h2>📋 Thông tin giao hàng</h2>

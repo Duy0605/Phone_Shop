@@ -86,7 +86,7 @@ include __DIR__ . '/../layouts/header-component.php';
         <span class="close" onclick="closeCheckoutModal()">&times;</span>
         <h2>📋 Thông tin đặt hàng</h2>
 
-        <form method="POST" action="<?= config('app.base_url') ?>/checkout" id="checkoutForm">
+        <form method="POST" action="/checkout" id="checkoutForm">
             <?= csrfField() ?>
 
             <!-- Hidden input chứa danh sách item IDs được chọn -->
