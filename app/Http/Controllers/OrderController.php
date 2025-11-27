@@ -82,21 +82,31 @@ class OrderController
             redirect('/checkout');
         }
 
-        // Lấy giỏ hàng
+        // Lấy danh sách item IDs được chọn
+        $selectedItems = post('selected_items');
+        if (empty($selectedItems)) {
+            setFlashMessage('error', 'Vui lòng chọn ít nhất một sản phẩm!');
+            redirect('/cart');
+        }
+
+        $selectedItemIds = explode(',', $selectedItems);
+
+        // Chuyển đổi sang integer
+        $selectedItemIds = array_map('intval', $selectedItemIds);
+
+        // Lấy giỏ hàng và lọc chỉ lấy sản phẩm được chọn
         $cartModel = new Cart();
         $cartItemModel = new CartItem();
         $cart = $cartModel->getOrCreateCart(getUserId());
-        $cartItems = $cartItemModel->getCartItems($cart['id']);
+        $allCartItems = $cartItemModel->getCartItems($cart['id']);
+
+        // Lọc chỉ lấy các item được chọn
+        $cartItems = array_filter($allCartItems, function ($item) use ($selectedItemIds) {
+            return in_array((int) $item['id'], $selectedItemIds, true);
+        });
 
         if (empty($cartItems)) {
-            setFlashMessage('error', 'Giỏ hàng đang trống!');
-            redirect('/products');
-        }
-
-        // Validate stock lần cuối
-        $stockValidation = $cartItemModel->validateStock($cart['id']);
-        if (!$stockValidation['valid']) {
-            setFlashMessage('error', implode('<br>', $stockValidation['errors']));
+            setFlashMessage('error', 'Không có sản phẩm nào được chọn!');
             redirect('/cart');
         }
 
@@ -109,12 +119,9 @@ class OrderController
             'notes' => $notes
         ];
 
-        $orderId = $orderModel->createOrder(getUserId(), $customerInfo, $cartItems);
+        $orderId = $orderModel->createOrder(getUserId(), $customerInfo, $cartItems, $selectedItemIds);
 
         if ($orderId) {
-            // Xóa giỏ hàng sau khi đặt hàng thành công
-            $cartItemModel->clearCartItems($cart['id']);
-
             setFlashMessage('success', 'Đặt hàng thành công! Mã đơn hàng: #' . $orderId);
             redirect('/order/' . $orderId);
         } else {
@@ -172,6 +179,9 @@ class OrderController
         ];
 
         $order['status_text'] = $statusMap[$order['status']] ?? $order['status'];
+
+        // Truyền items riêng cho view
+        $orderItems = $order['items'] ?? [];
 
         $pageTitle = 'Chi tiết đơn hàng #' . $orderId;
         require_once __DIR__ . '/../../../resources/view/orders/detail.php';

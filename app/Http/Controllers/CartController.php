@@ -33,6 +33,13 @@ class CartController
             $total = $cartItemModel->calculateTotal($cart['id']);
         }
 
+        // Lấy thông tin user nếu đã đăng nhập
+        $user = null;
+        if (isAuthenticated()) {
+            $userModel = new \Models\User();
+            $user = $userModel->find(getUserId());
+        }
+
         $pageTitle = 'Giỏ hàng';
         require_once __DIR__ . '/../../../resources/view/cart/index.php';
     }
@@ -91,7 +98,7 @@ class CartController
             redirect('/cart');
         }
 
-        $productId = (int) post('product_id');
+        $itemId = (int) post('item_id');
         $quantity = (int) post('quantity');
 
         if ($quantity < 0) {
@@ -99,27 +106,29 @@ class CartController
             redirect('/cart');
         }
 
-        $cart = $this->getOrCreateCart();
+        // Lấy thông tin cart item
+        $cartItemModel = new CartItem();
+        $cartItem = $cartItemModel->find($itemId);
+
+        if (!$cartItem) {
+            setFlashMessage('error', 'Không tìm thấy sản phẩm trong giỏ!');
+            redirect('/cart');
+        }
 
         // Kiểm tra stock nếu tăng số lượng
         if ($quantity > 0) {
             $productModel = new Product();
-            if (!$productModel->checkStock($productId, $quantity)) {
+            if (!$productModel->checkStock($cartItem['product_id'], $quantity)) {
                 setFlashMessage('error', 'Không đủ hàng trong kho!');
                 redirect('/cart');
             }
         }
 
         // Cập nhật
-        $cartItemModel = new CartItem();
-        $updated = $cartItemModel->updateQuantity($cart['id'], $productId, $quantity);
+        $updated = $cartItemModel->updateQuantityById($itemId, $quantity);
 
         if ($updated) {
-            if ($quantity == 0) {
-                setFlashMessage('success', 'Đã xóa sản phẩm khỏi giỏ hàng!');
-            } else {
-                setFlashMessage('success', 'Đã cập nhật giỏ hàng!');
-            }
+            setFlashMessage('success', 'Đã cập nhật giỏ hàng!');
         } else {
             setFlashMessage('error', 'Có lỗi xảy ra!');
         }
@@ -136,11 +145,10 @@ class CartController
             redirect('/cart');
         }
 
-        $productId = (int) post('product_id');
-        $cart = $this->getOrCreateCart();
+        $itemId = (int) post('item_id');
 
         $cartItemModel = new CartItem();
-        $removed = $cartItemModel->removeFromCart($cart['id'], $productId);
+        $removed = $cartItemModel->delete($itemId);
 
         if ($removed) {
             setFlashMessage('success', 'Đã xóa sản phẩm khỏi giỏ hàng!');

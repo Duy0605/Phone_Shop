@@ -133,3 +133,97 @@ function formatPrice(price) {
         currency: "VND",
     }).format(price);
 }
+
+// Checkout Modal Functions
+function showCheckoutModal() {
+    // Kiểm tra có sản phẩm nào được chọn không
+    const selectedItems = document.querySelectorAll(".item-select:checked");
+    if (selectedItems.length === 0) {
+        alert("Vui lòng chọn ít nhất một sản phẩm để đặt hàng!");
+        return;
+    }
+
+    // Lấy danh sách item IDs được chọn
+    const selectedIds = Array.from(selectedItems).map(
+        (item) => item.dataset.id
+    );
+
+    // Điền vào hidden input
+    const selectedItemIdsInput = document.getElementById("selectedItemIds");
+    if (selectedItemIdsInput) {
+        selectedItemIdsInput.value = selectedIds.join(",");
+    }
+
+    const modal = document.getElementById("checkoutModal");
+    if (modal) {
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+    }
+}
+
+function closeCheckoutModal() {
+    const modal = document.getElementById("checkoutModal");
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+}
+
+// Toggle Select All Checkbox
+function toggleSelectAll() {
+    const selectAllCheckbox = document.getElementById("selectAll");
+    const itemCheckboxes = document.querySelectorAll(".item-select");
+
+    itemCheckboxes.forEach((checkbox) => {
+        checkbox.checked = selectAllCheckbox.checked;
+    });
+
+    updateTotal();
+}
+
+// Update Total Based on Selected Items
+function updateTotal() {
+    const itemCheckboxes = document.querySelectorAll(".item-select");
+    let total = 0;
+    let selectedCount = 0;
+
+    itemCheckboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+            const price = parseFloat(checkbox.dataset.price);
+            const quantity = parseInt(checkbox.dataset.quantity);
+            total += price * quantity;
+            selectedCount++;
+        }
+    });
+
+    // Update UI
+    document.getElementById("subtotal").textContent = formatPrice(total);
+    document.getElementById("totalAmount").textContent = formatPrice(total);
+    document.getElementById("selectedCount").textContent = selectedCount;
+
+    // Update select all checkbox state
+    const selectAllCheckbox = document.getElementById("selectAll");
+    const totalCheckboxes = itemCheckboxes.length;
+    const checkedCheckboxes = document.querySelectorAll(
+        ".item-select:checked"
+    ).length;
+
+    selectAllCheckbox.checked = checkedCheckboxes === totalCheckboxes;
+    selectAllCheckbox.indeterminate =
+        checkedCheckboxes > 0 && checkedCheckboxes < totalCheckboxes;
+}
+
+// Close modal when clicking outside
+window.onclick = function (event) {
+    const modal = document.getElementById("checkoutModal");
+    if (event.target === modal) {
+        closeCheckoutModal();
+    }
+};
+
+// Close modal on Escape key
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        closeCheckoutModal();
+    }
+});

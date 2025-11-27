@@ -16,9 +16,10 @@ class Order extends BaseModel
      * @param int $userId
      * @param array $customerInfo ['customer_name', 'customer_phone', 'customer_address', 'notes']
      * @param array $cartItems Danh sách items từ giỏ hàng
+     * @param array $selectedItemIds Danh sách item IDs được chọn để xóa
      * @return int|false Order ID hoặc false
      */
-    public function createOrder($userId, $customerInfo, $cartItems)
+    public function createOrder($userId, $customerInfo, $cartItems, $selectedItemIds = [])
     {
         $this->beginTransaction();
 
@@ -27,14 +28,14 @@ class Order extends BaseModel
             $productModel = new Product();
             foreach ($cartItems as $item) {
                 if (!$productModel->checkStock($item['product_id'], $item['quantity'])) {
-                    throw new \Exception("Sản phẩm '{$item['name']}' không đủ hàng");
+                    throw new \Exception("Sản phẩm '{$item['product_name']}' không đủ hàng");
                 }
             }
 
             // Tính tổng tiền
             $totalAmount = 0;
             foreach ($cartItems as $item) {
-                $totalAmount += $item['price'] * $item['quantity'];
+                $totalAmount += $item['product_price'] * $item['quantity'];
             }
 
             // Tạo order
@@ -61,13 +62,21 @@ class Order extends BaseModel
                 $orderItemModel->create([
                     'order_id' => $orderId,
                     'product_id' => $item['product_id'],
-                    'product_name' => $item['name'],
+                    'product_name' => $item['product_name'],
                     'quantity' => $item['quantity'],
-                    'price' => $item['price']
+                    'price' => $item['product_price']
                 ]);
 
                 // Giảm stock
                 $productModel->decreaseStock($item['product_id'], $item['quantity']);
+            }
+
+            // Xóa các cart items đã đặt hàng
+            if (!empty($selectedItemIds)) {
+                $cartItemModel = new CartItem();
+                foreach ($selectedItemIds as $itemId) {
+                    $cartItemModel->delete($itemId);
+                }
             }
 
             $this->commit();
@@ -238,7 +247,7 @@ class Order extends BaseModel
     public function getTotalRevenue($filters = [])
     {
         $sql = "SELECT SUM(total_amount) as revenue FROM {$this->table} 
-                WHERE status != 'cancelled'";
+                WHERE status = 'delivered'";
 
         $params = [];
 

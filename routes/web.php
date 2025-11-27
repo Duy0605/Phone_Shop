@@ -37,6 +37,7 @@ $routes['GET']['/checkout'] = 'OrderController@showCheckout';
 $routes['POST']['/checkout'] = 'OrderController@processCheckout';
 $routes['GET']['/orders'] = 'OrderController@myOrders';
 $routes['GET']['/order/{id}'] = 'OrderController@detail';
+$routes['GET']['/orders/{id}'] = 'OrderController@detail'; // Alternative route
 
 // Profile (yêu cầu đăng nhập)
 $routes['GET']['/profile'] = 'AuthController@profile';

@@ -28,8 +28,8 @@
         <div class="footer-section">
             <h3>Liên hệ</h3>
             <p>📧 Email: contact@phoneshop.com</p>
-            <p>📞 Hotline: 1900 xxxx</p>
-            <p>📍 Địa chỉ: TP. Hồ Chí Minh</p>
+            <p>📞 Hotline: 032 8322623</p>
+            <p>📍 Địa chỉ: TP. Hà Nội</p>
         </div>
     </div>
     <div class="footer-bottom">

@@ -118,15 +118,15 @@ $statusText = [
             <h3>Thông tin nhận hàng</h3>
             <div class="info-row">
                 <span>Người nhận:</span>
-                <span><?= escape($order['shipping_name']) ?></span>
+                <span><?= escape($order['customer_name']) ?></span>
             </div>
             <div class="info-row">
                 <span>Điện thoại:</span>
-                <span><?= escape($order['shipping_phone']) ?></span>
+                <span><?= escape($order['customer_phone']) ?></span>
             </div>
             <div class="info-row">
                 <span>Địa chỉ:</span>
-                <span><?= escape($order['shipping_address']) ?></span>
+                <span><?= escape($order['customer_address']) ?></span>
             </div>
 
             <h3>Tổng tiền</h3>

@@ -74,7 +74,7 @@ class CartItem extends BaseModel
     }
 
     /**
-     * Cập nhật số lượng sản phẩm
+     * Cập nhật số lượng theo cart_id và product_id
      * @param int $cartId
      * @param int $productId
      * @param int $quantity
@@ -92,6 +92,22 @@ class CartItem extends BaseModel
 
         $stmt = $this->getConnection()->prepare($sql);
         return $stmt->execute([$quantity, $cartId, $productId]);
+    }
+
+    /**
+     * Cập nhật số lượng theo item_id
+     * @param int $itemId
+     * @param int $quantity
+     * @return bool
+     */
+    public function updateQuantityById($itemId, $quantity)
+    {
+        $sql = "UPDATE {$this->table} 
+                SET quantity = ? 
+                WHERE id = ?";
+
+        $stmt = $this->getConnection()->prepare($sql);
+        return $stmt->execute([$quantity, $itemId]);
     }
 
     /**
