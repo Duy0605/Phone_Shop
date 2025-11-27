@@ -17,10 +17,38 @@ body.auth-page {
     max-width: 450px;
     width: 100%;
     overflow: hidden;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .register-container {
     max-width: 500px;
+}
+
+/* Auth Body với scroll */
+.auth-body {
+    padding: 2rem;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* Custom scrollbar */
+.auth-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.auth-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.auth-body::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 4px;
+}
+
+.auth-body::-webkit-scrollbar-thumb:hover {
+    background: #5568d3;
 }
 
 /* Auth Header */
@@ -39,11 +67,6 @@ body.auth-page {
 .auth-header p {
     opacity: 0.9;
     font-size: 0.95rem;
-}
-
-/* Auth Body */
-.auth-body {
-    padding: 2rem;
 }
 
 /* Form Elements */
@@ -71,6 +94,72 @@ body.auth-page {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.auth-body .form-group input.error {
+    border-color: #f56565;
+}
+
+.auth-body .form-group input.success {
+    border-color: #48bb78;
+}
+
+.auth-body .form-group .field-error {
+    color: #f56565;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.auth-body .form-group .field-error.show {
+    display: block;
+}
+
+.auth-body .form-group .field-success {
+    color: #48bb78;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.auth-body .form-group .field-success.show {
+    display: block;
+}
+
+/* Password Strength */
+.password-strength {
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.password-strength-bar {
+    height: 100%;
+    width: 0;
+    transition: all 0.3s;
+}
+
+.password-strength-bar.weak {
+    width: 33%;
+    background: #f56565;
+}
+
+.password-strength-bar.medium {
+    width: 66%;
+    background: #ed8936;
+}
+
+.password-strength-bar.strong {
+    width: 100%;
+    background: #48bb78;
+}
+
+.password-strength-text {
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    color: #666;
 }
 
 /* Submit Button */
