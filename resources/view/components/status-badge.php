@@ -5,6 +5,8 @@
  * @param string $status Order status (pending, processing, shipping, delivered, cancelled)
  */
 
+$status = $status ?? '';
+
 $statusLabels = [
     'pending' => '⏳ Chờ xử lý',
     'processing' => '⚙️ Đang xử lý',
