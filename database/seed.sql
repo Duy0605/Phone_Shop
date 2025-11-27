@@ -23,13 +23,15 @@ INSERT INTO users (name, email, phone, password, role) VALUES
 -- ============================================
 -- Seed Brands
 -- ============================================
+-- Note: Logo paths should be relative to public/ directory (e.g., uploads/images/brand-logo.png)
+-- For now, using NULL as actual logo files don't exist yet
 INSERT INTO brands (name, slug, description, logo) VALUES
-('Apple', 'apple', 'Thương hiệu công nghệ hàng đầu thế giới từ Mỹ, nổi tiếng với dòng iPhone, iPad và Macbook.', 'apple-logo.png'),
-('Samsung', 'samsung', 'Tập đoàn điện tử lớn nhất Hàn Quốc, dẫn đầu thị trường smartphone Android toàn cầu.', 'samsung-logo.png'),
-('Xiaomi', 'xiaomi', 'Thương hiệu công nghệ từ Trung Quốc, nổi tiếng với các sản phẩm chất lượng cao và giá cả hợp lý.', 'xiaomi-logo.png'),
-('Oppo', 'oppo', 'Thương hiệu điện thoại đến từ Trung Quốc, chuyên về camera và thiết kế thời trang.', 'oppo-logo.png'),
-('Vivo', 'vivo', 'Thương hiệu smartphone nổi tiếng với công nghệ camera selfie và màn hình đẹp.', 'vivo-logo.png'),
-('Realme', 'realme', 'Thương hiệu trẻ trung, năng động với các sản phẩm giá tốt dành cho giới trẻ.', 'realme-logo.png');
+('Apple', 'apple', 'Thương hiệu công nghệ hàng đầu thế giới từ Mỹ, nổi tiếng với dòng iPhone, iPad và Macbook.', NULL),
+('Samsung', 'samsung', 'Tập đoàn điện tử lớn nhất Hàn Quốc, dẫn đầu thị trường smartphone Android toàn cầu.', NULL),
+('Xiaomi', 'xiaomi', 'Thương hiệu công nghệ từ Trung Quốc, nổi tiếng với các sản phẩm chất lượng cao và giá cả hợp lý.', NULL),
+('Oppo', 'oppo', 'Thương hiệu điện thoại đến từ Trung Quốc, chuyên về camera và thiết kế thời trang.', NULL),
+('Vivo', 'vivo', 'Thương hiệu smartphone nổi tiếng với công nghệ camera selfie và màn hình đẹp.', NULL),
+('Realme', 'realme', 'Thương hiệu trẻ trung, năng động với các sản phẩm giá tốt dành cho giới trẻ.', NULL);
 
 -- ============================================
 -- Seed Products - Apple

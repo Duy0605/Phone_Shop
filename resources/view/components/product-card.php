@@ -3,7 +3,7 @@
     <div class="product-card">
         <div class="product-image">
             <?php if (!empty($product['image'])): ?>
-                <img src="<?= config('app.base_url') ?>/<?= escape($product['image']) ?>" alt="<?= escape($product['name']) ?>">
+                <img src="<?= url('/' . escape($product['image'])) ?>" alt="<?= escape($product['name']) ?>">
             <?php else: ?>
                 📱
             <?php endif; ?>

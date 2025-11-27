@@ -83,7 +83,7 @@ $statusText = [
                             <td>
                                 <div class="product-info-row">
                                     <?php if (!empty($item['product_image'])): ?>
-                                        <img src="<?= config('app.base_url') ?>/<?= escape($item['product_image']) ?>"
+                                        <img src="<?= url('/' . escape($item['product_image'])) ?>"
                                             alt="<?= escape($item['product_name']) ?>" class="product-thumbnail">
                                     <?php else: ?>
                                         <div class="product-thumbnail no-image">📱</div>

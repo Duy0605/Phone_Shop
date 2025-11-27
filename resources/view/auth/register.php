@@ -26,7 +26,7 @@
                 </div>
             <?php endif; ?>
 
-            <form method="POST" action="" id="registerForm">
+            <form method="POST" action="<?= url('/register') ?>" id="registerForm">
                 <div class="form-group">
                     <label for="name">Họ và tên *</label>
                     <input type="text" id="name" name="name" value="<?= escape($_POST['name'] ?? '') ?>"
@@ -45,7 +45,7 @@
                 <div class="form-group">
                     <label for="phone">Số điện thoại *</label>
                     <input type="tel" id="phone" name="phone" value="<?= escape($_POST['phone'] ?? '') ?>"
-                        placeholder="0xxxxxxxxx" required pattern="[0-9]{10,11}">
+                        placeholder="Ví dụ: 0912345678" required pattern="0[35789][0-9]{8}">
                     <div class="field-error" id="phone-error"></div>
                     <div class="field-success" id="phone-success">✓ Số điện thoại hợp lệ</div>
                 </div>
@@ -129,12 +129,12 @@
         phoneInput.addEventListener('blur', function () {
             const error = document.getElementById('phone-error');
             const success = document.getElementById('phone-success');
-            const phoneRegex = /^[0-9]{10,11}$/;
+            const phoneRegex = /^0[35789][0-9]{8}$/;
 
             if (!phoneRegex.test(this.value)) {
                 this.classList.add('error');
                 this.classList.remove('success');
-                error.textContent = 'Số điện thoại phải có 10-11 chữ số';
+                error.textContent = 'Số điện thoại phải có 10 chữ số và bắt đầu bằng 03/05/07/08/09';
                 error.classList.add('show');
                 success.classList.remove('show');
             } else {
@@ -200,7 +200,7 @@
             // Check all fields
             if (nameInput.value.length < 3) isValid = false;
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) isValid = false;
-            if (!/^[0-9]{10,11}$/.test(phoneInput.value)) isValid = false;
+            if (!/^0[35789][0-9]{8}$/.test(phoneInput.value)) isValid = false;
             if (passwordInput.value.length < 6) isValid = false;
             if (passwordInput.value !== confirmPasswordInput.value) isValid = false;
 

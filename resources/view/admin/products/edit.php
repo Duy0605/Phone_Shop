@@ -299,8 +299,7 @@
                     <?php if ($product['image']): ?>
                         <div class="current-image">
                             <p style="margin-bottom: 0.5rem; font-weight: 500;">Ảnh hiện tại:</p>
-                            <img src="<?= config('app.base_url') ?>/<?= escape($product['image']) ?>"
-                                alt="<?= escape($product['name']) ?>">
+                            <img src="<?= url('/' . escape($product['image'])) ?>" alt="<?= escape($product['name']) ?>">
                         </div>
                     <?php endif; ?>
 
