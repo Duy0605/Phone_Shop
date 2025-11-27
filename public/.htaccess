@@ -2,7 +2,10 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     
-    # Redirect all requests to index.php
+    # Static resources are now in public/resources/
+    # No rewrite needed - they're already accessible
+    
+    # Redirect all other requests to index.php
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)$ index.php [QSA,L]

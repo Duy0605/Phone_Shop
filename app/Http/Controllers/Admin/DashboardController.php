@@ -55,6 +55,6 @@ class DashboardController
         ]);
 
         $pageTitle = 'Dashboard - Admin';
-        require_once __DIR__ . '/../../../resources/view/admin/dashboard.php';
+        require_once __DIR__ . '/../../../../resources/view/admin/dashboard.php';
     }
 }

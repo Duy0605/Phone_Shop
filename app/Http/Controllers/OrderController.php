@@ -43,7 +43,7 @@ class OrderController
         $total = $cartItemModel->calculateTotal($cart['id']);
 
         $pageTitle = 'Thanh toán';
-        require_once __DIR__ . '/../../resources/view/checkout.php';
+        require_once __DIR__ . '/../../../resources/view/checkout.php';
     }
 
     /**
@@ -136,7 +136,7 @@ class OrderController
         $orders = $orderModel->getUserOrders(getUserId());
 
         $pageTitle = 'Đơn hàng của tôi';
-        require_once __DIR__ . '/../../resources/view/orders/index.php';
+        require_once __DIR__ . '/../../../resources/view/orders/index.php';
     }
 
     /**
@@ -174,6 +174,6 @@ class OrderController
         $order['status_text'] = $statusMap[$order['status']] ?? $order['status'];
 
         $pageTitle = 'Chi tiết đơn hàng #' . $orderId;
-        require_once __DIR__ . '/../../resources/view/orders/detail.php';
+        require_once __DIR__ . '/../../../resources/view/orders/detail.php';
     }
 }

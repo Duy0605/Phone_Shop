@@ -20,6 +20,7 @@ spl_autoload_register(function ($class) {
     $namespaceMap = [
         'Controllers\\' => __DIR__ . '/app/Http/Controllers/',
         'Models\\' => __DIR__ . '/app/Models/',
+        'Middleware\\' => __DIR__ . '/app/Http/Middleware/',
         'Http\\' => __DIR__ . '/app/Http/',
     ];
 

@@ -78,7 +78,7 @@ class ProductController
         $brands = $brandModel->all('name', 'ASC');
 
         $pageTitle = 'Danh sách sản phẩm';
-        require_once __DIR__ . '/../../resources/view/products/index.php';
+        require_once __DIR__ . '/../../../resources/view/products/index.php';
     }
 
     /**
@@ -105,7 +105,7 @@ class ProductController
         $relatedProducts = $productModel->getByBrand($product['brand_id'], 4);
 
         $pageTitle = $product['name'];
-        require_once __DIR__ . '/../../resources/view/products/detail.php';
+        require_once __DIR__ . '/../../../resources/view/products/detail.php';
     }
 
     /**
@@ -146,7 +146,7 @@ class ProductController
         );
 
         $pageTitle = 'Sản phẩm ' . $brand['name'];
-        require_once __DIR__ . '/../../resources/view/products/by-brand.php';
+        require_once __DIR__ . '/../../../resources/view/products/by-brand.php';
     }
 
     /**
@@ -184,6 +184,6 @@ class ProductController
         );
 
         $pageTitle = 'Tìm kiếm: ' . escape($keyword);
-        require_once __DIR__ . '/../../resources/view/products/search.php';
+        require_once __DIR__ . '/../../../resources/view/products/search.php';
     }
 }

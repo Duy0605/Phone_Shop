@@ -267,7 +267,7 @@ class Order extends BaseModel
      */
     public function getOrderStatistics()
     {
-        $sql = "SELECT status, COUNT(*) as count 
+        $sql = "SELECT status, COUNT(*) as count, SUM(total_amount) as total 
                 FROM {$this->table} 
                 GROUP BY status";
 

@@ -24,7 +24,7 @@ class BrandController
         $brands = $brandModel->getAllWithProductCount();
 
         $pageTitle = 'Quản lý thương hiệu - Admin';
-        require_once __DIR__ . '/../../../resources/view/admin/brands/index.php';
+        require_once __DIR__ . '/../../../../resources/view/admin/brands/index.php';
     }
 
     /**
@@ -35,7 +35,7 @@ class BrandController
         AdminMiddleware::check();
 
         $pageTitle = 'Thêm thương hiệu - Admin';
-        require_once __DIR__ . '/../../../resources/view/admin/brands/create.php';
+        require_once __DIR__ . '/../../../../resources/view/admin/brands/create.php';
     }
 
     /**
@@ -109,7 +109,7 @@ class BrandController
         }
 
         $pageTitle = 'Sửa thương hiệu - Admin';
-        require_once __DIR__ . '/../../../resources/view/admin/brands/edit.php';
+        require_once __DIR__ . '/../../../../resources/view/admin/brands/edit.php';
     }
 
     /**

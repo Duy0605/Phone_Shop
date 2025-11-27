@@ -20,6 +20,8 @@ public/uploads/*
 cache/
 *.cache
 
+# Note: public/resources/ (CSS/JS) SHOULD be tracked in Git
+
 # Environment & Config (nếu có thông tin nhạy cảm)
 # config/database.php
 

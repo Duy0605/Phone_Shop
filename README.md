@@ -200,3 +200,11 @@ Upload lên XAMPP
 Import database
 Cấu hình file permissions
 Test trên localhost
+
+Tôi khuyên nên làm theo thứ tự:
+
+Views Admin (Products, Brands, Orders, Customers) - để admin quản lý được
+Views Customer (Profile, My Orders) - để user sử dụng
+Upload ảnh - để thêm/sửa sản phẩm có ảnh
+Middleware & Security - để bảo mật
+UI/UX improvements - để đẹp hơn

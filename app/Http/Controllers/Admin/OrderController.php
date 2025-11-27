@@ -53,7 +53,7 @@ class OrderController
         ];
 
         $pageTitle = 'Quản lý đơn hàng - Admin';
-        require_once __DIR__ . '/../../../resources/view/admin/orders/index.php';
+        require_once __DIR__ . '/../../../../resources/view/admin/orders/index.php';
     }
 
     /**
@@ -83,7 +83,7 @@ class OrderController
         $order['status_text'] = $statusMap[$order['status']] ?? $order['status'];
 
         $pageTitle = 'Chi tiết đơn hàng #' . $id . ' - Admin';
-        require_once __DIR__ . '/../../../resources/view/admin/orders/detail.php';
+        require_once __DIR__ . '/../../../../resources/view/admin/orders/detail.php';
     }
 
     /**

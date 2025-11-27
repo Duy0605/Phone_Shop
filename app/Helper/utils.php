@@ -72,7 +72,12 @@ function request($key, $default = null)
  */
 function formatPrice($price, $showCurrency = true)
 {
-    $formatted = number_format($price, 0, ',', '.');
+    // Handle null or empty values
+    if ($price === null || $price === '') {
+        $price = 0;
+    }
+
+    $formatted = number_format((float) $price, 0, ',', '.');
 
     return $showCurrency ? $formatted . 'đ' : $formatted;
 }

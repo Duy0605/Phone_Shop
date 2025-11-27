@@ -32,7 +32,7 @@ class CustomerController
         $customers = $userModel->getCustomersPaginated($perPage, $pagination['offset']);
 
         $pageTitle = 'Quản lý khách hàng - Admin';
-        require_once __DIR__ . '/../../../resources/view/admin/customers/index.php';
+        require_once __DIR__ . '/../../../../resources/view/admin/customers/index.php';
     }
 
     /**
@@ -63,6 +63,6 @@ class CustomerController
         }
 
         $pageTitle = 'Chi tiết khách hàng - Admin';
-        require_once __DIR__ . '/../../../resources/view/admin/customers/detail.php';
+        require_once __DIR__ . '/../../../../resources/view/admin/customers/detail.php';
     }
 }

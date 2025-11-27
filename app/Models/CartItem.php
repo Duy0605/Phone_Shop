@@ -18,7 +18,13 @@ class CartItem extends BaseModel
      */
     public function getCartItems($cartId)
     {
-        $sql = "SELECT ci.*, p.name, p.slug, p.price, p.image, p.stock, b.name as brand_name
+        $sql = "SELECT ci.*, 
+                p.name as product_name, 
+                p.slug as product_slug, 
+                p.price as product_price, 
+                p.image as product_image, 
+                p.stock as product_stock, 
+                b.name as brand_name
                 FROM {$this->table} ci
                 INNER JOIN products p ON ci.product_id = p.id
                 LEFT JOIN brands b ON p.brand_id = b.id

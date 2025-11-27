@@ -4,6 +4,9 @@
  * Điểm khởi đầu cho tất cả các requests
  */
 
+// Start session
+session_start();
+
 // Require autoloader
 require_once __DIR__ . '/../autoload.php';
 

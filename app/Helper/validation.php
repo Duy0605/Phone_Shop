@@ -21,8 +21,9 @@ function validateEmail($email)
  */
 function validatePhone($phone)
 {
-    // Format: 09xxxxxxxx, 08xxxxxxxx, 07xxxxxxxx, 03xxxxxxxx hoặc 84xxxxxxxxx
-    $pattern = '/^(0[3|5|7|8|9])+([0-9]{8})$/';
+    // Format: 09xxxxxxxx, 08xxxxxxxx, 07xxxxxxxx, 03xxxxxxxx, 05xxxxxxxx
+    // Đầu số hợp lệ tại VN: 03, 05, 07, 08, 09
+    $pattern = '/^0[35789][0-9]{8}$/';
     return preg_match($pattern, $phone) === 1;
 }
 

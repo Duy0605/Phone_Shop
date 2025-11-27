@@ -21,7 +21,7 @@ class AuthController
         }
 
         $pageTitle = 'Đăng nhập';
-        require_once __DIR__ . '/../../resources/view/auth/login.php';
+        require_once __DIR__ . '/../../../resources/view/auth/login.php';
     }
 
     /**
@@ -65,9 +65,12 @@ class AuthController
         login($user);
         setFlashMessage('success', 'Đăng nhập thành công! Chào mừng ' . $user['name']);
 
-        // Redirect về trang trước đó hoặc home
-        $redirectUrl = getRedirectAfterLogin() ?? '/';
-        redirect($redirectUrl);
+        // Redirect theo role
+        if ($user['role'] === 'admin') {
+            redirect('/admin/dashboard');
+        } else {
+            redirect('/');
+        }
     }
 
     /**
@@ -81,7 +84,7 @@ class AuthController
         }
 
         $pageTitle = 'Đăng ký';
-        require_once __DIR__ . '/../../resources/view/auth/register.php';
+        require_once __DIR__ . '/../../../resources/view/auth/register.php';
     }
 
     /**
@@ -93,9 +96,9 @@ class AuthController
             redirect('/register');
         }
 
-        $name = post('name');
-        $email = post('email');
-        $phone = post('phone');
+        $name = trim(post('name'));
+        $email = trim(post('email'));
+        $phone = trim(post('phone'));
         $password = post('password');
         $confirmPassword = post('confirm_password');
 
@@ -177,7 +180,7 @@ class AuthController
         $user = $userModel->find(getUserId());
 
         $pageTitle = 'Thông tin cá nhân';
-        require_once __DIR__ . '/../../resources/view/profile/index.php';
+        require_once __DIR__ . '/../../../resources/view/profile/index.php';
     }
 
     /**
@@ -242,7 +245,7 @@ class AuthController
         requireAuth();
 
         $pageTitle = 'Đổi mật khẩu';
-        require_once __DIR__ . '/../../resources/view/profile/change-password.php';
+        require_once __DIR__ . '/../../../resources/view/profile/change-password.php';
     }
 
     /**

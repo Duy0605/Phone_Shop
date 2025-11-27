@@ -55,7 +55,7 @@ class ProductController
         $brands = $brandModel->all('name', 'ASC');
 
         $pageTitle = 'Quản lý sản phẩm - Admin';
-        require_once __DIR__ . '/../../../resources/view/admin/products/index.php';
+        require_once __DIR__ . '/../../../../resources/view/admin/products/index.php';
     }
 
     /**
@@ -69,7 +69,7 @@ class ProductController
         $brands = $brandModel->all('name', 'ASC');
 
         $pageTitle = 'Thêm sản phẩm mới - Admin';
-        require_once __DIR__ . '/../../../resources/view/admin/products/create.php';
+        require_once __DIR__ . '/../../../../resources/view/admin/products/create.php';
     }
 
     /**
@@ -166,7 +166,7 @@ class ProductController
         $brands = $brandModel->all('name', 'ASC');
 
         $pageTitle = 'Sửa sản phẩm - Admin';
-        require_once __DIR__ . '/../../../resources/view/admin/products/edit.php';
+        require_once __DIR__ . '/../../../../resources/view/admin/products/edit.php';
     }
 
     /**

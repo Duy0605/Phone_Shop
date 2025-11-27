@@ -34,7 +34,7 @@ class CartController
         }
 
         $pageTitle = 'Giỏ hàng';
-        require_once __DIR__ . '/../../resources/view/cart/index.php';
+        require_once __DIR__ . '/../../../resources/view/cart/index.php';
     }
 
     /**
