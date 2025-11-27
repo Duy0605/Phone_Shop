@@ -336,7 +336,7 @@
                             <tr>
                                 <td>
                                     <?php if ($product['image']): ?>
-                                        <img src="<?= url('/' . escape($product['image'])) ?>" alt="<?= escape($product['name']) ?>"
+                                        <img src="<?= config('app.base_url') ?>/<?= escape($product['image']) ?>" alt="<?= escape($product['name']) ?>"
                                             class="product-img">
                                     <?php else: ?>
                                         <div class="product-img"

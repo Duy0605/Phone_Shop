@@ -266,7 +266,7 @@
                         <div class="brand-card">
                             <div class="brand-logo">
                                 <?php if ($brand['logo']): ?>
-                                    <img src="<?= url('/' . escape($brand['logo'])) ?>" 
+                                    <img src="<?= config('app.base_url') ?>/<?= escape($brand['logo']) ?>" 
                                          alt="<?= escape($brand['name']) ?>">
                                 <?php else: ?>
                                     <div class="placeholder">🏷️</div>
@@ -326,7 +326,7 @@
                                 <tr>
                                     <td class="logo-cell">
                                         <?php if ($brand['logo']): ?>
-                                            <img src="<?= url('/' . escape($brand['logo'])) ?>" 
+                                            <img src="<?= config('app.base_url') ?>/<?= escape($brand['logo']) ?>" 
                                                  alt="<?= escape($brand['name']) ?>" 
                                                  class="logo-img">
                                         <?php else: ?>

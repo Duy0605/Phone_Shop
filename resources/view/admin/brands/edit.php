@@ -261,7 +261,7 @@
                     <?php if ($brand['logo']): ?>
                         <div class="current-logo">
                             <p style="margin-bottom: 0.5rem; font-weight: 500;">Logo hiện tại:</p>
-                            <img src="<?= url('/' . escape($brand['logo'])) ?>" alt="<?= escape($brand['name']) ?>">
+                            <img src="<?= config('app.base_url') ?>/<?= escape($brand['logo']) ?>" alt="<?= escape($brand['name']) ?>">
                         </div>
                     <?php endif; ?>
 
